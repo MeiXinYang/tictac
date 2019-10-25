@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import { version, Button } from "antd";
+import "antd/dist/antd.css";
 
-// class Square extends React.Component {
+ import { Timeline } from 'antd';
+import TimelineItem from "antd/es/timeline/TimelineItem";
+// import "./index.css";// class Square extends React.Component {
 //     constructor(props) {
 //         super(props);
 //     }
@@ -27,12 +31,8 @@ function Square(props) {
 }
 
 class Board extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     renderSquare(i) {
-        return (<Square value={this.props.squares[i]} idx = {i}
+        return (<Square value={this.props.squares[i]} key={i}
                         onClick={() => this.props.onClick(i)}/>);
     }
 
@@ -44,7 +44,7 @@ class Board extends React.Component {
         return rowSqu;
     }
 
-    renderBorder(){
+    renderBorder() {
         let rowArray = [];
         for (let rowInx = 0; rowInx < 3; rowInx++) {
             rowArray.push(<div className="board-row"> {this.renderRow(rowInx)}</div>);
@@ -61,6 +61,30 @@ class Board extends React.Component {
     }
 }
 
+class Clock extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            currentDate: new Date()
+        }
+    }
+
+    componentDidMount() {
+        this.timerId = setInterval(() => {
+            this.setState({currentDate: new Date()});
+        }, 1000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerId);
+    }
+
+    render() {
+        let currentDate = this.state.currentDate;
+        return (<div className='clock'>current date is {currentDate.toLocaleTimeString()}</div>)
+    }
+}
+
 class Game extends React.Component {
     constructor(props) {
         super(props);
@@ -70,11 +94,10 @@ class Game extends React.Component {
             xNext: true,
             stepNumber: 0,
             currentStep: 0,
-            currentDate: new Date()
         }
     }
 
-    handleClick(i) {
+    handlePutChess(i) {
         if ((this.state.currentStep !== this.state.stepNumber)) {
             alert("look history can not click");
             return;
@@ -119,18 +142,19 @@ class Game extends React.Component {
 
         let moves = history.map((his, idex) => {
             let desp = "第" + (idex + 1) + "步";
-            return (<li key={idex} className="history_li" onClick={() => this.showHistory(idex)}>{desp}</li>);
+            return (<TimelineItem key={idex}  onClick={() => this.showHistory(idex)}>{desp}</TimelineItem>);
         });
-        this.state.currentDate = new Date();
+
         return (
             <div className="game">
                 <div className="game-board">
-                    <Board squares={current.squares} onClick={(i) => this.handleClick(i)}/>
+                    <Board squares={current.squares} onClick={(i) => this.handlePutChess(i)}/>
                 </div>
                 <div className="game-info">
                     <div>{status}</div>
-                    <div>{this.state.currentDate.toString()}</div>
-                    <ol className="history_ol">{moves}</ol>
+                    <Clock/>
+                    {/*<ol className="history_ol">{moves}</ol>*/}
+                    <Timeline pending={(this.state.xNext ? 'X' : 'O')+"思考中"}>{moves}</Timeline>
                 </div>
             </div>
         );
@@ -144,12 +168,6 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
-setInterval(()=>{
-    ReactDOM.render(
-        <Game/>,
-        document.getElementById('root')
-    );
-},1000);
 
 function calculateWinner(squares) {
     const lines = [
