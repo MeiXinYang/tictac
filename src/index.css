@@ -55,7 +55,14 @@ ol, ul {
     width: 30%;
     margin-left: 7%;
 }
-
+.imageDiv{
+    float: left;
+    background: url("pic/logo192.png");
+    background-size: contain;
+    width: 90px;
+    height: 90px;
+    box-shadow: gray 3px 4px 4px;
+}
 .history_ol {
     border-color: gray;
     padding: 0;
@@ -76,3 +83,4 @@ ol, ul {
     color: white;
     width: auto;
 }
+

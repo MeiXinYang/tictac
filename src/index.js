@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import { version, Button } from "antd";
+import {version, Button} from "antd";
 import "antd/dist/antd.css";
-
- import { Timeline } from 'antd';
+import {Timeline} from 'antd';
+import "./index.css";
 import TimelineItem from "antd/es/timeline/TimelineItem";
+import jsonData from "./json/json-loader"
 // import "./index.css";// class Square extends React.Component {
 //     constructor(props) {
 //         super(props);
@@ -142,7 +142,7 @@ class Game extends React.Component {
 
         let moves = history.map((his, idex) => {
             let desp = "第" + (idex + 1) + "步";
-            return (<TimelineItem key={idex}  onClick={() => this.showHistory(idex)}>{desp}</TimelineItem>);
+            return (<TimelineItem key={idex} onClick={() => this.showHistory(idex)}>{desp}</TimelineItem>);
         });
 
         return (
@@ -154,8 +154,10 @@ class Game extends React.Component {
                     <div>{status}</div>
                     <Clock/>
                     {/*<ol className="history_ol">{moves}</ol>*/}
-                    <Timeline pending={(this.state.xNext ? 'X' : 'O')+"思考中"}>{moves}</Timeline>
+                    <Timeline pending={(this.state.xNext ? 'X' : 'O') + "思考中"}>{moves}</Timeline>
                 </div>
+                <div className="imageDiv"></div>
+                <div className="game-info">{JSON.stringify(jsonData)}</div>
             </div>
         );
     }
@@ -164,7 +166,10 @@ class Game extends React.Component {
 // ========================================
 
 ReactDOM.render(
-    <Game/>,
+    <Suspense fallback={<div>fallback</div>}>
+        <Game/>
+    </Suspense>
+    ,
     document.getElementById('root')
 );
 
