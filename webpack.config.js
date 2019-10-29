@@ -6,8 +6,9 @@ const resolve = (dir) => path.join(__dirname, dir);
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 module.exports = {
     mode: "development",
+    devtool: "inline-source-map",
     entry: {
-        entry: resolve("./src/index.js")
+        main: resolve("./src/index.js")
     },
     output: {
         path: resolve('dist'),
