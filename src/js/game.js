@@ -2,8 +2,9 @@ import React from "react";
 import TimelineItem from "antd/es/timeline/TimelineItem";
 import {Timeline} from "antd";
 import jsonData from "../json/json-loader";
+import ThemeContext from "./themeContext";
+import {Button} from "antd";
 
-const ThemeContext = React.createContext("light");
 function calculateWinner(squares) {
     const lines = [
         [0, 1, 2],
@@ -24,16 +25,36 @@ function calculateWinner(squares) {
     return null;
 }
 
-function Square(props) {
-    return (
-        <button className="square" onClick={props.onClick}>
-            {props.value}
-        </button>
-    )
+// function Square(props) {
+//     return (
+//         <ThemeContext.Consumer>
+//             <button className={"square " + value} onClick={this.props.onClick}>
+//                 {this.props.value}
+//             </button>
+//         </ThemeContext.Consumer>
+//     )
+// }
 
+class Square extends React.Component {
+    constructor(props) {
+        super(props);
+        Square.contextType = ThemeContext;
+    }
+
+    render() {
+        return (
+            <button className={"square " + this.context} onClick={this.props.onClick}>
+                {this.props.value}
+            </button>
+        )
+    }
 }
 
 class Board extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     renderSquare(i) {
         return (<Square value={this.props.squares[i]} key={i}
                         onClick={() => this.props.onClick(i)}/>);
@@ -70,6 +91,7 @@ class Clock extends React.Component {
         this.state = {
             currentDate: new Date()
         }
+        Clock.contextType = ThemeContext;
     }
 
     componentDidMount() {
@@ -97,7 +119,9 @@ class Game extends React.Component {
             xNext: true,
             stepNumber: 0,
             currentStep: 0,
+            theme: "light-theme"
         }
+        this.switchTheme = this.switchTheme.bind(this);
     }
 
     handlePutChess(i) {
@@ -131,6 +155,13 @@ class Game extends React.Component {
         })
     }
 
+    switchTheme() {
+        this.setState((state, props) => {
+            return {
+                theme: state.theme === "light-theme" ? "dark-theme" : "light-theme"
+            }
+        })
+    }
 
     render() {
         let history = this.state.history;
@@ -149,19 +180,22 @@ class Game extends React.Component {
         });
 
         return (
-            <div className="game">
-                <div className="game-board">
-                    <Board squares={current.squares} onClick={(i) => this.handlePutChess(i)}/>
+            <ThemeContext.Provider value={this.state.theme}>
+                <Button id="switchThemeBtn" onClick={this.switchTheme}>切换主题</Button>
+                <div className="game">
+                    <div className="game-board">
+                        <Board squares={current.squares} onClick={(i) => this.handlePutChess(i)}/>
+                    </div>
+                    <div className="game-info">
+                        <div>{status}</div>
+                        <Clock/>
+                        {/*<ol className="history_ol">{moves}</ol>*/}
+                        <Timeline pending={(this.state.xNext ? 'X' : 'O') + "思考中"}>{moves}</Timeline>
+                    </div>
+                    <div className="imageDiv"></div>
+                    <div className="game-info">{JSON.stringify(jsonData)}</div>
                 </div>
-                <div className="game-info">
-                    <div>{status}</div>
-                    <Clock/>
-                    {/*<ol className="history_ol">{moves}</ol>*/}
-                    <Timeline pending={(this.state.xNext ? 'X' : 'O') + "思考中"}>{moves}</Timeline>
-                </div>
-                <div className="imageDiv"></div>
-                <div className="game-info">{JSON.stringify(jsonData)}</div>
-            </div>
+            </ThemeContext.Provider>
         );
     }
 }
