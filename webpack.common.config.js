@@ -5,8 +5,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const resolve = (dir) => path.join(__dirname, dir);
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 module.exports = {
-    mode: "development",
-    devtool: "inline-source-map",
     entry: {
         main: resolve("./src/index.js")
     },
@@ -68,11 +66,6 @@ module.exports = {
 
         ]
     },
-    devServer: {
-        host: 'localhost',
-        port: 8088,
-        open: true,
-    },
 
     plugins: [
         new HtmlWebpackPlugin({
@@ -84,6 +77,5 @@ module.exports = {
             filename: 'bundle.[hash].css',
             chunkFilename: '[id].[hash].css'
         }),
-        new webpack.HotModuleReplacementPlugin()
     ],
 }
