@@ -26,6 +26,14 @@ module.exports = {
                 use: [
                     {loader: "style-loader"},
                     {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            // you can specify a publicPath here
+                            // by default it use publicPath in webpackOptions.output
+                            publicPath: '../'
+                        }
+                    },
+                    {
                         loader: "css-loader",
                     }]
             },
@@ -66,7 +74,11 @@ module.exports = {
 
         ]
     },
-
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
     plugins: [
         new HtmlWebpackPlugin({
             filename: resolve('dist/index.html'), // 生成的html文件存放的地址和文件名

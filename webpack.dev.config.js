@@ -1,5 +1,5 @@
 const merge = require("webpack-merge");
-const common = require("webpack.common.config");
+const common = require("./webpack.common.config.js");
 const webpack = require("webpack");
 module.exports = merge(common, {
     devServer: {
@@ -13,4 +13,5 @@ module.exports = merge(common, {
     plugins: [
         new webpack.HotModuleReplacementPlugin()//模块热替换
     ],
+
 })

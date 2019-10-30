@@ -3,6 +3,7 @@ import TimelineItem from "antd/es/timeline/TimelineItem";
 import {Timeline} from "antd";
 import jsonData from "../json/json-loader";
 
+const ThemeContext = React.createContext("light");
 function calculateWinner(squares) {
     const lines = [
         [0, 1, 2],
