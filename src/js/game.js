@@ -181,10 +181,14 @@ class Game extends React.Component {
 
         return (
             <ThemeContext.Provider value={this.state.theme}>
-                <Button id="switchThemeBtn" onClick={this.switchTheme}>切换主题</Button>
                 <div className="game">
-                    <div className="game-board">
-                        <Board squares={current.squares} onClick={(i) => this.handlePutChess(i)}/>
+                    <div className="game-ui">
+                        <div className="game-board">
+                            <Board squares={current.squares} onClick={(i) => this.handlePutChess(i)}/>
+                        </div>
+                        <div className="theme-switch-btn">
+                            <Button onClick={this.switchTheme}>切换主题</Button>
+                        </div>
                     </div>
                     <div className="game-info">
                         <div>{status}</div>
@@ -194,6 +198,7 @@ class Game extends React.Component {
                     </div>
                     <div className="imageDiv"></div>
                     <div className="game-info">{JSON.stringify(jsonData)}</div>
+
                 </div>
             </ThemeContext.Provider>
         );

@@ -1,0 +1,95 @@
+.functionKey {
+    border-style: none;
+    border-color: white ;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    color: darkorange;
+    transition: background-color 200ms;
+    margin: 6px;
+    font-size: 19px;
+    text-align: center;
+    line-height: 50px;
+    padding: 3px;
+    outline-style: none;
+    border-radius: 25px ;
+}
+
+.numberKey {
+    border-style: none;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    color: black;
+    font-size: 17px;
+    transition: background-color 200ms;
+    outline-style: none;
+    border-radius: 25px ;
+}
+
+.equalKey {
+    border-style: none;
+    width: 50px;
+    height: 50px;
+    background-color: darkorange;
+    color: white;
+    transition: background-color 200ms;
+    outline-style: none;
+    border-radius: 25px ;
+}
+
+.functionKey:hover {
+    background-color: gray;
+}
+
+.numberKey:hover {
+    background-color: gray;
+}
+
+.equalKey:hover {
+    background-color: #d86e00;
+}
+
+.calculater {
+    width: 500px;
+    box-shadow: #7f7f7f 4px 4px 4px 3px;
+}
+
+.key-board{
+    margin: 10px 20px;
+    padding: 20px 20px;
+    width: auto;
+    background-color: white;
+    border-top-style: solid ;
+    border-width: 1px;
+    border-color: #7f7f7f;
+}
+
+.screen {
+    height: 200px;
+    overflow: scroll;
+}
+
+.current-val {
+    padding-right: 20px;
+    width: auto;
+    font-size: 60px;
+    text-align: right;
+    height: 130px;
+    line-height: 130px;
+}
+
+.pre-val {
+    padding-right: 20px;
+    width: auto;
+    font-size: 50px;
+    text-align: right;
+    height: 130px;
+    line-height: 130px;
+}
+
+.his-item {
+    text-align: right;
+    font-size: 30px;
+}
+

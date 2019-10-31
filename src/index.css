@@ -45,27 +45,41 @@ ol, ul {
     width: 90%;
 }
 
-.light-theme{
+.light-theme {
     background-color: white;
     color: gray;
 }
 
-.dark-theme{
+.theme-switch-btn {
+    clear: both;
+    margin: 190px 30px 30px 60px;
+}
+
+.dark-theme {
     background-color: #555555;
     color: white;
 }
 
-.game-board{
+.game-board {
+    margin-top: 30px;
     margin-left: 7%;
     box-shadow: 0 4px 10px 3px rgba(0, 0, 0, 0.2);
     float: left;
 }
+
+.game-ui{
+    width: auto;
+    float: left;
+    box-shadow: 0 4px 10px 3px gray;
+}
+
 .game-info {
     float: left;
-    width: 30%;
-    margin-left: 7%;
+    width: auto;
+    margin-left: 60px;
 }
-.imageDiv{
+
+.imageDiv {
     float: left;
     background: url("pic/logo192.png");
     background-size: contain;
@@ -73,14 +87,16 @@ ol, ul {
     height: 90px;
     box-shadow: gray 3px 4px 4px;
 }
+
 .history_ol {
     border-color: gray;
     padding: 0;
     width: 50%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
-.history_li{
-    background-color:  #f1f1f1;
+
+.history_li {
+    background-color: #f1f1f1;
     list-style: none;
     padding: 5px auto;
     height: 46px;
@@ -88,7 +104,8 @@ ol, ul {
     line-height: 46px;
     font-size: medium;
 }
-.history_li:hover{
+
+.history_li:hover {
     background-color: #555;
     color: white;
     width: auto;
