@@ -4,9 +4,9 @@ import "./calculator.css"
 
 class Key extends React.Component {
     render() {
-        return (<button className={this.props.buttonStyle} onClick={this.props.click}>
+        return (<div className={this.props.buttonStyle} ><button className={"kbtn"} onClick={this.props.click}>
             {this.props.children}
-        </button>);
+        </button></div>);
     }
 }
 
@@ -14,36 +14,36 @@ class Key extends React.Component {
 class KeyBoard extends React.Component {
     render() {
         return (<div className="key-board">
-            <Row type={"flex"}>
-                <Col span={6}><Key buttonStyle={"functionKey"} click={this.props.clearKeyClick}>AC</Key></Col>
-                <Col span={6}><Key buttonStyle={"functionKey"}>DEL</Key></Col>
-                <Col span={6}><Key buttonStyle={"functionKey"} click={() => this.props.clickOptKey("%")}>%</Key></Col>
-                <Col span={6}><Key buttonStyle={"functionKey"} click={() => this.props.clickOptKey("/")}>/</Key></Col>
-            </Row>
-            <Row>
-                <Col span={6}><Key buttonStyle={"numberKey"} click={() => this.props.numberKeyClick("7")}>7</Key></Col>
-                <Col span={6}><Key buttonStyle={"numberKey"} click={() => this.props.numberKeyClick("8")}>8</Key></Col>
-                <Col span={6}><Key buttonStyle={"numberKey"} click={() => this.props.numberKeyClick("9")}>9</Key></Col>
-                <Col span={6}><Key buttonStyle={"functionKey"} click={() => this.props.clickOptKey("*")}>X</Key></Col>
-            </Row>
-            <Row>
-                <Col span={6}><Key buttonStyle={"numberKey"} click={() => this.props.numberKeyClick("4")}>4</Key></Col>
-                <Col span={6}><Key buttonStyle={"numberKey"} click={() => this.props.numberKeyClick("5")}>5</Key></Col>
-                <Col span={6}><Key buttonStyle={"numberKey"} click={() => this.props.numberKeyClick("6")}>6</Key></Col>
-                <Col span={6}><Key buttonStyle={"functionKey"} click={() => this.props.clickOptKey("-")}>-</Key></Col>
-            </Row>
-            <Row>
-                <Col span={6}><Key buttonStyle={"numberKey"} click={() => this.props.numberKeyClick("1")}>1</Key></Col>
-                <Col span={6}><Key buttonStyle={"numberKey"} click={() => this.props.numberKeyClick("2")}>2</Key></Col>
-                <Col span={6}><Key buttonStyle={"numberKey"} click={() => this.props.numberKeyClick("3")}>3</Key></Col>
-                <Col span={6}><Key buttonStyle={"functionKey"} click={() => this.props.clickOptKey("+")}>+</Key></Col>
-            </Row>
-            <Row>
-                <Col span={6}><Key buttonStyle={"numberKey"}>&nbsp;&nbsp;</Key></Col>
-                <Col span={6}><Key buttonStyle={"numberKey"}>0</Key></Col>
-                <Col span={6}><Key buttonStyle={"numberKey"}>.</Key></Col>
-                <Col span={6}><Key buttonStyle={"equalKey"} click={this.props.clickEqualKey}>=</Key></Col>
-            </Row>
+            <div className={"key-row"}>
+                <Key buttonStyle={"functionKey"} click={this.props.clearKeyClick}>AC</Key>
+                <Key buttonStyle={"functionKey"}>DEL</Key>
+                <Key buttonStyle={"functionKey"} click={() => this.props.clickOptKey("%")}>%</Key>
+                <Key buttonStyle={"functionKey"} click={() => this.props.clickOptKey("/")}>/</Key>
+            </div>
+            <div className={"key-row"}>
+                <Key buttonStyle={"numberKey"} click={() => this.props.numberKeyClick("7")}>7</Key>
+                <Key buttonStyle={"numberKey"} click={() => this.props.numberKeyClick("8")}>8</Key>
+                <Key buttonStyle={"numberKey"} click={() => this.props.numberKeyClick("9")}>9</Key>
+                <Key buttonStyle={"functionKey"} click={() => this.props.clickOptKey("*")}>X</Key>
+            </div>
+            <div className={"key-row"}>
+                <Key buttonStyle={"numberKey"} click={() => this.props.numberKeyClick("4")}>4</Key>
+                <Key buttonStyle={"numberKey"} click={() => this.props.numberKeyClick("5")}>5</Key>
+                <Key buttonStyle={"numberKey"} click={() => this.props.numberKeyClick("6")}>6</Key>
+                <Key buttonStyle={"functionKey"} click={() => this.props.clickOptKey("-")}>-</Key>
+            </div>
+            <div className={"key-row"}>
+                <Key buttonStyle={"numberKey"} click={() => this.props.numberKeyClick("1")}>1</Key>
+                <Key buttonStyle={"numberKey"} click={() => this.props.numberKeyClick("2")}>2</Key>
+                <Key buttonStyle={"numberKey"} click={() => this.props.numberKeyClick("3")}>3</Key>
+                <Key buttonStyle={"functionKey"} click={() => this.props.clickOptKey("+")}>+</Key>
+            </div>
+            <div className={"key-row"}>
+                <Key buttonStyle={"numberKey"}>&nbsp;&nbsp;</Key>
+                <Key buttonStyle={"numberKey"}>0</Key>
+                <Key buttonStyle={"numberKey"}>.</Key>
+                <Key buttonStyle={"equalKey"} click={this.props.clickEqualKey}> = </Key>
+            </div>
         </div>);
     }
 }

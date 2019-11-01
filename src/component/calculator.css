@@ -1,73 +1,76 @@
-.functionKey {
-    border-style: none;
-    border-color: white ;
+.kbtn {
     width: 50px;
     height: 50px;
-    background-color: white;
-    color: darkorange;
-    transition: background-color 200ms;
-    margin: 6px;
-    font-size: 19px;
-    text-align: center;
+    font-size: 17px;
     line-height: 50px;
-    padding: 3px;
+    text-align: center;
     outline-style: none;
-    border-radius: 25px ;
+    border-radius: 25px;
+    background-color: #c4c4c4;
+    border-style: none;
+    transition: background 200ms;
+}
+
+.kbtn:hover {
+    background-color: coral;
+}
+
+.functionKey {
+    flex: 1 1 25%;
+    height: 50px;
 }
 
 .numberKey {
-    border-style: none;
-    width: 50px;
-    height: 50px;
-    background-color: white;
-    color: black;
-    font-size: 17px;
-    transition: background-color 200ms;
-    outline-style: none;
-    border-radius: 25px ;
+    flex: 1 1 25%;
+    border-radius: 25px;
 }
 
 .equalKey {
-    border-style: none;
-    width: 50px;
-    height: 50px;
-    background-color: darkorange;
-    color: white;
-    transition: background-color 200ms;
-    outline-style: none;
-    border-radius: 25px ;
+    flex: 1 1 25%;
 }
 
-.functionKey:hover {
-    background-color: gray;
-}
-
-.numberKey:hover {
-    background-color: gray;
-}
-
-.equalKey:hover {
-    background-color: #d86e00;
-}
 
 .calculater {
-    width: 500px;
+    width: 350px;
     box-shadow: #7f7f7f 4px 4px 4px 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
 }
 
-.key-board{
+.key-board {
     margin: 10px 20px;
     padding: 20px 20px;
-    width: auto;
     background-color: white;
-    border-top-style: solid ;
+    border-top-style: solid;
     border-width: 1px;
     border-color: #7f7f7f;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-items: flex-start;
+    align-items: flex-start;
+}
+
+.key-row {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 .screen {
-    height: 200px;
+    display: -webkit-flex;
+    height: 14rem;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
     overflow: scroll;
+    overflow-x: hidden;
 }
 
 .current-val {
@@ -76,7 +79,8 @@
     font-size: 60px;
     text-align: right;
     height: 130px;
-    line-height: 130px;
+    justify-content: flex-end;
+    flex: 1 1 100%;
 }
 
 .pre-val {
@@ -85,11 +89,13 @@
     font-size: 50px;
     text-align: right;
     height: 130px;
-    line-height: 130px;
+    justify-content: flex-end;
+    flex: 1 1 100%;
 }
 
 .his-item {
-    text-align: right;
+    align-self: flex-end;
+    flex: 1 1 100%;
     font-size: 30px;
 }
 
