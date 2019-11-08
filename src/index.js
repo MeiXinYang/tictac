@@ -7,14 +7,16 @@ import "./index.css";
 import TimelineItem from "antd/es/timeline/TimelineItem";
 import Game from "./js/game"
 import Calculater from "./component/calculater"
+import ToDo from "./component/todo";
 // ========================================
 
 ReactDOM.render(
     <Suspense fallback={<div>fallback</div>}>
-        <div>
-            {/*<Game/>*/}
+        <div className={"main"}>
+            <Game/>
+            <Calculater/>
+            <ToDo/>
         </div>
-        <Calculater/>
     </Suspense>
     ,
     document.getElementById('root')

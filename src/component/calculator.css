@@ -31,12 +31,12 @@
 
 
 .calculater {
-    width: 350px;
     box-shadow: #7f7f7f 4px 4px 4px 3px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
+    flex: 0 1 350px;
 }
 
 .key-board {

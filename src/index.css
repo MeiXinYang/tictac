@@ -111,3 +111,10 @@ ol, ul {
     width: auto;
 }
 
+.main{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-items: left;
+    justify-content: space-around;
+}
