@@ -113,8 +113,12 @@ ol, ul {
 
 .main{
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-items: left;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-items: flex-start;
+    align-items: flex-start;
+}
+
+.main > * {
+    margin: 2rem;
+    box-shadow: 3px 3px 15px 5px grey  ;
 }

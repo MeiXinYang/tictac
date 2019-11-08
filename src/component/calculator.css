@@ -36,7 +36,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
-    flex: 0 1 350px;
+    width: 19rem;
+    flex: 0 1 9rem;
 }
 
 .key-board {
@@ -80,7 +81,7 @@
     text-align: right;
     height: 130px;
     justify-content: flex-end;
-    flex: 1 1 100%;
+    flex: 1 ;
 }
 
 .pre-val {
@@ -90,12 +91,12 @@
     text-align: right;
     height: 130px;
     justify-content: flex-end;
-    flex: 1 1 100%;
+    flex: 1 ;
 }
 
 .his-item {
     align-self: flex-end;
-    flex: 1 1 100%;
+    flex: 1 ;
     font-size: 30px;
 }
 
