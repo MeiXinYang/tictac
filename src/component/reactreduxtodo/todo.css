@@ -1,0 +1,25 @@
+.todo{
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 11rem;
+    width: 30rem;
+    box-shadow: 3px 3px 15px 5px grey;
+
+}
+
+.todoInput{
+    display: flex;
+    flex-direction: row;
+}
+.todo-text-input{
+    border-right-style: none;
+}
+.add-todo{
+    border-left-style: none;
+}
+
+.todo-list{
+    border: solid ;
+    margin-top: 1rem;
+    padding: 1rem;
+}

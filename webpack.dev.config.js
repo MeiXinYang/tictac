@@ -6,7 +6,10 @@ module.exports = merge(common, {
         host: 'localhost',
         port: 8088,
         open: true,
-        hot: true //模块热替换
+        hot: true, //模块热替换
+        historyApiFallback: {
+            index: '/',
+        },
     },
     mode: "development",
     devtool: "inline-source-map",

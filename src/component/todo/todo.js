@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDom from "react-dom";
-import Store from "../store/store"
+import Store from "../../store/store"
 import {Button, Input, List, message, notification} from "antd";
 import "./todo.css";
+import {useSelector} from "react-redux";
 
 class ToDo extends React.Component {
     constructor(props) {

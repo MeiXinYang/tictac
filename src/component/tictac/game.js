@@ -1,7 +1,7 @@
 import React from "react";
 import TimelineItem from "antd/es/timeline/TimelineItem";
 import {Timeline} from "antd";
-import jsonData from "../json/json-loader";
+import jsonData from "../../json/json-loader";
 import ThemeContext from "./themeContext";
 import {Button} from "antd";
 
