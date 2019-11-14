@@ -8,6 +8,7 @@ import Calculater from "../calculate/calculater";
 import Game from "../tictac/game";
 import Breadcrumb from "../breadcrumb/breadcrumb";
 import {Redirect} from "react-router";
+import Weather from "../weather/weather";
 
 const {Header, Content, Footer, Sider} = Layout;
 const {SubMenu} = Menu;
@@ -77,6 +78,12 @@ class LayOut extends React.Component {
                                 <span>react-redux-todo</span>
                             </Link>
                         </Menu.Item>
+                        <Menu.Item key="5">
+                            <Link to={"/app/weather"}>
+                                <Icon type="pie-chart"/>
+                                <span>天气</span>
+                            </Link>
+                        </Menu.Item>
                     </Menu>
                 </Sider>
                 <Layout>
@@ -91,6 +98,7 @@ class LayOut extends React.Component {
                                 <Route path={`/app/calculate`} exact component={Calculater}/>
                                 <Route path={"/app/tictac"} exact component={Game}/>
                                 <Route path={"/app/routereduxtodo"} exact component={ReactReduxToDo}/>
+                                <Route path={"/app/weather"} exact component={Weather}/>
                                 <Route path="*" render={(props) => {
                                     return <div>Page not Found</div>
                                 }}/>
