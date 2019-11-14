@@ -1,6 +1,6 @@
 let defState = {
     todoList: [],
-    todoMsg: "请输入"
+    todoMsg: ""
 }
 let todoReducer = (
     (state = defState, action) => {

@@ -66,7 +66,7 @@ class LayOut extends React.Component {
                             </Link>
                         </Menu.Item>
                         <Menu.Item key="3">
-                            <Link to={`/tictac`}>
+                            <Link to={`/app/tictac`}>
                                 <Icon type="pie-chart"/>
                                 <span>跳棋</span>
                             </Link>
