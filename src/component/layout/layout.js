@@ -1,4 +1,4 @@
-import {Layout, Menu, Icon} from 'antd';
+import {Layout, Menu, Icon, Avatar} from 'antd';
 import React from "react";
 import "./layout.css";
 import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
@@ -34,8 +34,6 @@ class LayOut extends React.Component {
         // this.setState({
         //     "dateInterval": interval
         // })
-        console.log("### props.match is ####")
-        console.log(this.props.match);
     }
 
     componentWillUnmount() {
@@ -48,38 +46,37 @@ class LayOut extends React.Component {
     };
 
     render() {
+        let {path: matchPath} = this.props.match;
         return (
             <Layout style={{minHeight: '100vh'}}>
-                <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}
-                       style={{background: '#fff'}}>
-                    <div className="logo"/>
-                    <Menu theme="light" defaultSelectedKeys={['1']} mode="inline">
+                <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
+                    <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
                         <Menu.Item key="1">
-                            <Link to={"/app/todo"}>
+                            <Link to={`${matchPath}/todo`}>
                                 <Icon type="pie-chart"/>
                                 <span>代办</span>
                             </Link>
                         </Menu.Item>
                         <Menu.Item key="2">
-                            <Link to={`/app/calculate`}>
+                            <Link to={`${matchPath}/calculate`}>
                                 <Icon type="pie-chart"/>
                                 <span>计算器</span>
                             </Link>
                         </Menu.Item>
                         <Menu.Item key="3">
-                            <Link to={`/app/tictac`}>
+                            <Link to={`${matchPath}/tictac`}>
                                 <Icon type="pie-chart"/>
                                 <span>跳棋</span>
                             </Link>
                         </Menu.Item>
                         <Menu.Item key="4">
-                            <Link to={"/app/routereduxtodo"}>
+                            <Link to={`${matchPath}/routereduxtodo`}>
                                 <Icon type="pie-chart"/>
                                 <span>react-redux-todo</span>
                             </Link>
                         </Menu.Item>
                         <Menu.Item key="5">
-                            <Link to={"/app/weather"}>
+                            <Link to={`${matchPath}/weather`}>
                                 <Icon type="pie-chart"/>
                                 <span>天气</span>
                             </Link>
@@ -87,18 +84,19 @@ class LayOut extends React.Component {
                     </Menu>
                 </Sider>
                 <Layout>
-                    <Breadcrumb/>
-                    <Header style={{background: 'green', padding: 0, margin: '10 16px'}}>
+                    <Header className={"header"}>
                         Welcome {new Date().toLocaleTimeString()}
+                        <div className={"user-info"}><Avatar className={"user-icon"} >TOM</Avatar></div>
                     </Header>
-                      <Content style={{margin: '10 16px'}}>
+                    <Content>
+                        <Breadcrumb/>
                         <div style={{padding: 24, background: '#fff', minHeight: 360}}>
                             <Switch>
-                                <Route path={`/app/todo`} exact component={ToDo}/>
-                                <Route path={`/app/calculate`} exact component={Calculater}/>
-                                <Route path={"/app/tictac"} exact component={Game}/>
-                                <Route path={"/app/routereduxtodo"} exact component={ReactReduxToDo}/>
-                                <Route path={"/app/weather"} exact component={Weather}/>
+                                <Route path={`${matchPath}/todo`} exact component={ToDo}/>
+                                <Route path={`${matchPath}/calculate`} exact component={Calculater}/>
+                                <Route path={`${matchPath}/tictac`} exact component={Game}/>
+                                <Route path={`${matchPath}/routereduxtodo`} exact component={ReactReduxToDo}/>
+                                <Route path={`${matchPath}/weather`} exact component={Weather}/>
                                 <Route path="*" render={(props) => {
                                     return <div>Page not Found</div>
                                 }}/>

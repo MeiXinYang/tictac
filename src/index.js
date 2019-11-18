@@ -16,9 +16,7 @@ import store from "./store/store"
 ReactDOM.render(
     <Provider store={store}><HashRouter>
         <Switch>
-            <Route path="/app" render={(props) => {
-                return (<LayOut/>);
-            }}/>
+            <Route path="/app" component={LayOut}/>
             <Route path="**" render={(props) => {
                 return (<div>main page not found</div>);
             }}/>

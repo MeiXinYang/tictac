@@ -12,6 +12,12 @@ module.exports = {
         path: resolve('dist'),
         filename: '[name].[hash].js'
     },
+    resolve: {
+        extensions: [".js",".json"],
+        alias: {
+            "@":path.join("_dirname","src")
+        }
+    },
     module: {
         rules: [
             {

@@ -3,3 +3,21 @@
     background: rgba(255, 255, 255, 0.2);
     margin: 16px;
 }
+
+.header{
+    display: flex;
+    flex-direction: row;
+    background: #757575;
+    align-items: center;
+    height: 2.5rem;
+    justify-content: space-between;
+}
+
+.user-info{
+    width: 4rem;
+}
+
+.user-icon{
+    background-color: coral;
+    vertical-align: middle;
+}
