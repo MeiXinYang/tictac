@@ -1,5 +1,15 @@
-.weather{
+.weather {
     width: 25rem;
     display: flex;
     flex-direction: column;
+}
+
+.weather-card {
+    width: 25rem;
+    flex: 1 1 25rem;
+    border-style: none;
+}
+.weather-card-today{
+    background-image: linear-gradient(to bottom right, #1adfe2, #5ebce5);
+    height: 20rem;
 }

@@ -1,21 +1,24 @@
 import * as React from "react";
-import {Avatar, Card, Input, Skeleton} from "antd";
+import {Avatar, Card, Input, List, Skeleton} from "antd";
 import weatherInstance from "../../api/httpclient";
 import TextArea from "antd/lib/input/TextArea";
 import "./weather.css";
 import Meta from "antd/es/card/Meta";
+import BMap from 'BMap';
 
 class Weather extends React.Component {
 
     constructor(props, context) {
         super(props, context);
         this.state = {
-            city: "南京",
+            city: "",
             weather: "",
+            currentCity: "",
             searchLoading: true
         };
         this.getWeather = this.getWeather.bind(this);
         this.renderCard = this.renderCard.bind(this);
+        this.getCity = this.getCity.bind(this);
     }
 
     getWeather() {
@@ -23,25 +26,43 @@ class Weather extends React.Component {
         let {city} = this.state;
         let resp = weatherInstance.get(null, {params: {city}})
             .then((resp) => {
-                this.setState({weather: resp.data.results, searchLoading: false});
+                let result = resp.data.results[0];
+                this.setState({
+                    weather: result.weather_data,
+                    currentCity: result.currentCity,
+                    pm:result.pm25,
+                    searchLoading: false
+                });
             });
     }
 
     componentDidMount() {
+        let localCity = new BMap.LocalCity();
+        localCity.get(this.getCity);
         this.getWeather();
     }
 
-    renderCard(){
-        let weatherDatas;
-        try {
-            weatherDatas = this.state.weather[0].weather_data;
-            console.log(weatherDatas);
-        } catch (e) {
-            console.error(e)
-            return ;
+    getCity(result){
+        let cityName = result.name;
+        this.setState({"city":cityName});
+    }
+
+    renderCard(weatherData, index) {
+        if (0 === index) {
+            return (<List.Item key={index}>
+                <Card className={"weather-card-today weather-card"} hoverable>
+                    <Meta
+                        avatar={
+                            <Avatar src={weatherData.dayPictureUrl}/>
+                        }
+                        title={`${this.state.currentCity} ${weatherData.date}`}
+                        description={`${weatherData.weather} ${weatherData.wind} ${weatherData.temperature} pm2.5 :${this.state.pm}`}
+                    />
+                </Card>
+            </List.Item>);
         }
-        let weatherCards = Array.of(weatherDatas).map((weatherData,index)=>{
-            return (<Card loading={this.state.searchLoading}> key={index}
+        return (<List.Item key={index}>
+            <Card className={"weather-card"} hoverable>
                 <Meta
                     avatar={
                         <Avatar src={weatherData.dayPictureUrl}/>
@@ -49,9 +70,8 @@ class Weather extends React.Component {
                     title={weatherData.date}
                     description={`${weatherData.weather} ${weatherData.wind} ${weatherData.temperature}`}
                 />
-            </Card>);
-        });
-        return weatherCards;
+            </Card>
+        </List.Item>);
     }
 
     render() {
@@ -63,9 +83,11 @@ class Weather extends React.Component {
                 }} onPressEnter={this.getWeather} value={this.state.city} onSearch={this.getWeather}
                               loading={this.state.searchLoading} enterButton/>
                 <Skeleton loading={this.state.searchLoading} active>
-                    {this.renderCard()}
+                    <List dataSource={this.state.weather} split={false}
+                          renderItem={(data, index) => {
+                              return this.renderCard(data, index)
+                          }}/>
                 </Skeleton>
-                <div></div>
             </div>
         );
     }

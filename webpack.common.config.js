@@ -80,6 +80,9 @@ module.exports = {
 
         ]
     },
+    externals:{
+        'BMap':'BMap',
+    },
     optimization: {
         splitChunks: {
             chunks: 'all'
