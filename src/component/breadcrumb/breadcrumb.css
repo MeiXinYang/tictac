@@ -1,11 +1,3 @@
-cus-breadcrumb{
-    background-color: coral;
-}
-
-breadcrumbItems:nth-child(odd) {
-    background-color: #b8e570;
-    font-size: 1rem;
-}
-breadcrumbItems:nth-child(even) {
-    background-color: #7b9c4e;
+.cus-breadcrumb{
+    background-color: white;
 }

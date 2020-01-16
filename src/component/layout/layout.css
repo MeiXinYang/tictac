@@ -7,14 +7,11 @@
 .header{
     display: flex;
     flex-direction: row;
-    background: #757575;
+    background: white;
     align-items: center;
     height: 2.5rem;
     justify-content: space-between;
-}
-
-.user-info{
-    width: 4rem;
+    text-align: center;
 }
 
 .user-icon{

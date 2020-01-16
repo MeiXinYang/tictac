@@ -2,6 +2,8 @@
     width: 25rem;
     display: flex;
     flex-direction: column;
+    padding: 0.5rem;
+    box-shadow: 3px 3px 15px 5px grey  ;
 }
 
 .weather-card {

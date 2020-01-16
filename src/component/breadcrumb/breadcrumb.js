@@ -19,9 +19,6 @@ function Apps(props){
 
 const Home = withRouter(props => {
     const { location,history,match } = props;
-    console.log(location);
-    console.log(history);
-    console.log(match);
 
     const pathSnippets = location.pathname.split('/').filter(i => i);
     const extraBreadcrumbItems = pathSnippets.map((_, index) => {
@@ -39,7 +36,7 @@ const Home = withRouter(props => {
     ].concat(extraBreadcrumbItems);
     return (
         <div className="cus-breadcrumb">
-            <Breadcrumb className="cus-breadcrumb" separator={">"}>{breadcrumbItems}</Breadcrumb>
+            <Breadcrumb className="cus-breadcrumb" separator={"/"}>{breadcrumbItems}</Breadcrumb>
         </div>
     );
 });

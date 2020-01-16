@@ -24,22 +24,6 @@ class LayOut extends React.Component {
         this.onCollapse = this.onCollapse.bind(this);
     }
 
-
-    componentDidMount() {
-        // let interval = setInterval(() => {
-        //     this.setState({
-        //         "date": new Date().toLocaleTimeString()
-        //     })
-        // }, 1000);
-        // this.setState({
-        //     "dateInterval": interval
-        // })
-    }
-
-    componentWillUnmount() {
-        // this.state.dateInterval();
-    }
-
     onCollapse(collapsed) {
         console.log(collapsed);
         this.setState({collapsed});
@@ -47,35 +31,38 @@ class LayOut extends React.Component {
 
     render() {
         let {path: matchPath} = this.props.match;
+        let {pathname: currentPath} = this.props.location;
+        console.log("current path %s",currentPath);
         return (
-            <Layout style={{minHeight: '100vh'}}>
-                <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
-                    <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                        <Menu.Item key="1">
+            <Layout style={{minHeight: '100vh',backgroundColor:"gray"}}>
+                <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse} width={256} style={{ minHeight: '100vh', color: 'white' }}>
+                    <div style={{ height: '32px', background: 'rgba(255,255,255,.2)', margin: '16px'}}/>
+                    <Menu theme="dark" defaultSelectedKeys={[`${currentPath}`]} mode="inline">
+                        <Menu.Item key={`${matchPath}/todo`}>
                             <Link to={`${matchPath}/todo`}>
                                 <Icon type="pie-chart"/>
                                 <span>代办</span>
                             </Link>
                         </Menu.Item>
-                        <Menu.Item key="2">
+                        <Menu.Item key={`${matchPath}/calculate`}>
                             <Link to={`${matchPath}/calculate`}>
                                 <Icon type="pie-chart"/>
                                 <span>计算器</span>
                             </Link>
                         </Menu.Item>
-                        <Menu.Item key="3">
+                        <Menu.Item key={`${matchPath}/tictac`}>
                             <Link to={`${matchPath}/tictac`}>
                                 <Icon type="pie-chart"/>
                                 <span>跳棋</span>
                             </Link>
                         </Menu.Item>
-                        <Menu.Item key="4">
+                        <Menu.Item key={`${matchPath}/routereduxtodo`}>
                             <Link to={`${matchPath}/routereduxtodo`}>
                                 <Icon type="pie-chart"/>
                                 <span>react-redux-todo</span>
                             </Link>
                         </Menu.Item>
-                        <Menu.Item key="5">
+                        <Menu.Item key={`${matchPath}/weather`}>
                             <Link to={`${matchPath}/weather`}>
                                 <Icon type="pie-chart"/>
                                 <span>天气</span>
@@ -84,11 +71,11 @@ class LayOut extends React.Component {
                     </Menu>
                 </Sider>
                 <Layout>
-                    <Header className={"header"}>
+                    <Header className={"header"} >
                         Welcome {new Date().toLocaleTimeString()}
                         <div className={"user-info"}><Avatar className={"user-icon"} >TOM</Avatar></div>
                     </Header>
-                    <Content>
+                    <Content style={{ margin: '24px 16px 0' }}>
                         <Breadcrumb/>
                         <div style={{padding: 24, background: '#fff', minHeight: 360}}>
                             <Switch>
